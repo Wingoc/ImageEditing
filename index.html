@@ -11,6 +11,7 @@
 		<button id="shuiyinBtn" class="mui-btn mui-btn-primary" type="button">点击添加文字</button>
 		<button id="download" class="mui-btn mui-btn-primary" type="button">下载</button>
 	</div>
+	<img id="img_show" src="#" />
 
 
 
@@ -58,11 +59,14 @@
 
 		document.getElementById("download").onclick = function(){
 
-			var a = document.createElement("a");
+			var img_show = document.getElementById("img_show");
 			canvas = document.getElementById("shuiyinTest");
-  			a.href = canvas.toDataURL();
-  			a.download = 'abc';
-  			a.click();
+			temp = canvas.toDataURL();
+  			img_show.src = temp;
+  			// console.log(img_show);
+  			// a.download = 'abc';
+  			// alert(a);
+  			// a.click();
 		}
 
 
