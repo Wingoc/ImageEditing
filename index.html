@@ -5,15 +5,19 @@
 </head>
 <body>
 	<canvas id="shuiyinTest"></canvas>
-	<input type="file" id="file" class="filepath" onchange="uploadPicture(this)" accept="image/jpg">
+	<input type="file" id="file" class="filepath" onchange="uploadPicture(this)" >
 	<div>
 		<input id="shuiyinText" value="[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50" type="text"/>
 		<button id="shuiyinBtn" class="mui-btn mui-btn-primary" type="button">点击添加文字</button>
+		<button id="download" class="mui-btn mui-btn-primary" type="button">下载</button>
 	</div>
 
 
 
 	<script type="text/javascript">
+
+		var img_url = "";
+
 		function shuiyin(canvasid,imgurl,addtext){
 
 			var img = new Image;
@@ -45,15 +49,26 @@
 			f = document.getElementById("file").files[0];
 			reads.readAsDataURL(f);
 			reads.onload = function(e){
-			shuiyin("shuiyinTest",this.result)
+				img_url = this.result;
+				shuiyin("shuiyinTest",img_url);
 			}
 
 		}
 
 
+		document.getElementById("download").onclick = function(){
+
+			var a = document.createElement("a");
+			canvas = document.getElementById("shuiyinTest");
+  			a.href = canvas.toDataURL();
+  			a.download = 'abc';
+  			a.click();
+		}
 
 
-		// shuiyin("shuiyinTest","./libs/image.jpg")
+
+
+
 	</script>
 </body>
 </html>
