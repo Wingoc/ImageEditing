@@ -1,148 +1,59 @@
-﻿<!DOCTYPE html>
-<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>改图</title>
-	<link rel="dns-prefetch" href="http://upload-z2.qiniup.com/">
-	<link rel="dns-prefetch" href="http://cloud3.gaitubao.net/">
-	<link rel="dns-prefetch" href="http://water.gaitubao.net/"> 
-	<meta name="renderer" content="webkit">
-	<meta http-equiv="Cache-Control" content="no-siteapp">
-	<meta http-equiv="Cache-Control" content="no-transform">
-	<link rel="shortcut icon" href="https://static.gaitubao.net/favicon.ico">
-	<link href="./libs/bootstrap.min.css" rel="stylesheet">
-	<link href="./libs/base35.css" rel="stylesheet">
-	<script src="./libs/hm.js"></script>
-	<script src="./libs/jquery.min.js"></script>
-	<script src="./libs/jquery.cookie.js"></script>
-	<script src="./libs/zh-cn35.js"></script>
-	<script src="./libs/bowser.min.js"></script>
-	<script src="./libs/base35.js"></script>
-	<link href="./libs/watermark35.css" rel="stylesheet">
-	<link href="./libs/bootstrap-colorpicker.min.css" rel="stylesheet">
-	<script src="./libs/bootstrap-colorpicker.min.js"></script>
-	<script src="./libs/canvas-to-blob.min.js"></script>
-	<script src="./libs/watermark35.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>canvas</title>
 </head>
 <body>
-	<div class="row">
-		<h1 style="text-align: center;">图片添加文字</h1>
-		<div class="ad" style="margin:.5em auto 1.5em">﻿ 
-			<script async="" src="./libs/f.txt"></script> 
-			<ins class="adsbygoogle" style="display:inline-block;width:468px;height:15px" data-ad-client="ca-pub-2517171305832459" data-ad-slot="6817188523"></ins> 
-			<script>
-				(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-		</div>
-		<canvas id="cav-photo"></canvas>
-		<canvas id="cav-photo-org" style="display: none"></canvas>
-		<canvas id="cav-water" style="display: none"></canvas>
-		<p id="processing" class="col-md-12">
-			<i class="fa fa-spinner fa-spin fa-4x" style="margin:.5em 0"></i><br>
-			<span class="text-muted" style="font-size: 22px"></span>
-		</p>
-		<div id="result">
-			<p class="text-muted" style="font-size: 64px"><i class="fa fa-smile-o"></i>
-			</p>
-			<p class="text-muted" style="font-size: 22px; margin-bottom: 1em">你的图片已成功添加水印！</p>
-			<p><a id="download" class="btn btn-primary btn-lg" href="http://www.gaitubao.com/shuiyin/#"><i class="fa fa-download"></i> 下载已添加水印的图片</a>
-			</p>
-			<p id="result-toolbar"><a id="res-url" class="btn btn-default btn-circle" title="打开原图" target="_blank" href="http://www.gaitubao.com/shuiyin/#"><i class="fa fa-photo"></i></a><a id="qr-code" class="btn btn-default btn-circle hidden-xs" title="下载二维码" href="http://www.gaitubao.com/shuiyin/#"><i class="fa fa-qrcode"></i></a><button id="delete-key" class="btn btn-default btn-circle" title="立即从服务器上删除图片"><i class="fa fa-trash"></i></button>
-				<a class="btn btn-default btn-circle" title="人工改图服务" href="http://www.gaitubao.com/rengong/"><i class="fa fa-user"></i></a>
-			</p>
-			<p> <a id="doagain" href="http://www.gaitubao.com/shuiyin">+再处理一张图片+</a> </p>
-			<p class="text-muted">如下载按钮点击后无反应，可尝试点击下方原图按钮直接打开原图后在图片上点右键进行保存；</p>
-			<p class="text-muted hidden-md hidden-lg">手机或平板用户打开原图后，可在图片上长按三秒后出现操作菜单，然后可选择保存或分享图片；</p>
-		</div>
-		<p id="water-type" style="margin: .5em 0 1em">
-			<button id="type-img" class="btn btn-info"><i class="fa fa-image"></i> 加图片水印</button> <button id="type-text" class="btn btn-info"><i class="fa fa-font"></i> 加文字水印</button>
-		</p>
-		<div id="toolbar" class="col-md-12">
-			<div class="form-inline">
-				<!--左边工具-->
-				<div id="toolbar-text">
-					<input id="text" placeholder="在这里输入水印文字..." class="form-control" maxlength="64" title="水印文字">
-					<div class="input-group">
-						<div class="input-group-btn">
-							<button id="text-bold" class="btn btn-default" title="加粗"><i class="fa fa-bold"></i></button> <button id="text-italic" class="btn btn-default" title="斜体"><i class="fa fa-italic"></i></button>
-							<button id="color" class="btn btn-default colorpicker-element" title="文字颜色"><i class="fa fa-stop" style="color: rgb(255, 0, 0);"></i></button>
-						</div>
-						<select id="font" class="form-control" title="水印字体">
-							<option value="黑体" selected="selected" style="font-family: 黑体;">黑体</option>
-							<option value="宋体" style="font-family: 宋体;">宋体</option>
-							<option value="仿宋" style="font-family: 仿宋;">仿宋</option>
-							<option value="楷体" style="font-family: 楷体;">楷体</option>
-							<option value="隶书" style="font-family: 隶书;">隶书</option>
-							<option value="幼圆" style="font-family: 幼圆;">幼圆</option>
-							<option value="Arial" style="font-family: Arial;">Arial</option>
-							<option value="Helvetica" style="font-family: Helvetica;">Helvetica</option>
-							<option value="Tahoma" style="font-family: Tahoma;">Tahoma</option>
-							<option value="Verdana" style="font-family: Verdana;">Verdana</option>
-							<option value="Georgia" style="font-family: Georgia;">Georgia</option>
-							<option value="Times New Roman" style="font-family: &quot;Times New Roman&quot;;">TimesNewRoman</option>
-						</select>
-					</div>
-				</div>
-				<div id="up-btn-water" class="btn btn-info btn-file-input">
-					<span>
-						<i class="fa fa-file-picture-o"></i>上传水印(LOGO)图片
-					</span>
-					<input id="water-upload" type="file" accept="image/*">
-				</div>
-				<div class="input-group">
-					<div class="input-group-addon">位置</div>
-					<select id="position" class="form-control" title="水印位置">
-						<option value="Center" selected="selected">正中心</option>
-						<option value="North">正上方</option>
-						<option value="South">正下方</option>
-						<option value="West">左边</option>
-						<option value="East">右边</option>
-						<option value="NorthWest">左上角</option>
-						<option value="SouthWest">左下角</option>
-						<option value="NorthEast">右上角</option>
-						<option value="SouthEast">右下角</option>
-					</select>
-					<div class="input-group-btn">
-						<button id="zoom-out" class="btn btn-default">缩小</button><button id="zoom-in" class="btn btn-default">放大</button>
-					</div>
-				</div>
-				<div class="btn-group">
-					<button id="opacity-down" class="btn btn-default">透明度-</button>
-					<button id="opacity-up" class="btn btn-default">透明度+</button>
-					<button id="margin-down" class="btn btn-default">边距-</button>
-					<button id="margin-up" class="btn btn-default">边距+</button>
-				</div>
-			</div>
-		</div>
-		<div>
-			<button id="submit" class="btn btn-lg btn-danger"><i class="fa fa-check"></i>  确定加水印</button>
-		</div>
-		<div id="upload-btn" class="btn btn-lg btn-success btn-file-input" style="margin-left: 120px">
-			<span>
-				<i class="fa fa-file-picture-o"></i>上传要加水印的图片
-			</span>
-			<input id="file-upload" type="file" accept="image/*">
-		</div>
-		<div class="ad" style="margin-top:1.5em">﻿<script async="" src="./libs/f.txt"></script> 
-			<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-2517171305832459" data-ad-slot="5841702520"></ins> 
-			<script>
-				(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-		</div>
+	<canvas id="shuiyinTest"></canvas>
+	<input type="file" id="file" class="filepath" onchange="uploadPicture(this)" accept="image/jpg">
+	<div>
+		<input id="shuiyinText" value="[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50" type="text"/>
+		<button id="shuiyinBtn" class="mui-btn mui-btn-primary" type="button">点击添加文字</button>
 	</div>
-</div>
-<script src="./libs/jquery-qrcode.min.js" async=""></script>
-<script src="./libs/bootstrap.min.js"></script>
-<link href="./libs/font-awesome.min.css" rel="stylesheet">
-<script>
-	var _hmt = _hmt || [];
-	(function() {
-		var hm = document.createElement("script");
-		hm.src = "https://hm.baidu.com/hm.js?171a5b22a928f9222ec310be2558a886";
-		var s = document.getElementsByTagName("script")[0]; 
-		s.parentNode.insertBefore(hm, s);
-	})();
-</script>
-<!--0427 20:56:46-->
 
-<div class="colorpicker dropdown-menu colorpicker-hidden colorpicker-right"><div class="colorpicker-saturation" style="background-color: rgb(255, 0, 0);"><i style="top: 0px; left: 100px;"><b></b></i></div><div class="colorpicker-hue"><i style="top: 100px;"></i></div><div class="colorpicker-alpha" style="background-color: rgb(255, 0, 0);"><i style="top: 0px;"></i></div><div class="colorpicker-color" style="background-color: rgb(255, 0, 0);"><div style="background-origincolor: rgb(255, 0, 0);"></div></div><div class="colorpicker-selectors"></div></div><div id="chrome_websiteIP" class="chrome_websiteIP_right">113.96.98.113</div></body></html>
+
+
+	<script type="text/javascript">
+		function shuiyin(canvasid,imgurl,addtext){
+
+			var img = new Image;
+			img.src = imgurl;
+			console.log(img);
+			img.onload = function(){
+				var canvas = document.getElementById(canvasid);
+				var ctx = canvas.getContext("2d");
+				ctx.drawImage(img,0,0,canvas.width,canvas.height);
+				ctx.font = "bold 11px 微软雅黑";
+				ctx.fillStyle = "rgba(0,0,128,0.8)";
+				document.getElementById("shuiyinBtn").onclick = function(){
+					var addtext = document.getElementById("shuiyinText").value;
+					console.log(addtext.length);
+					for (var i = 0; i <= addtext.length / 12; i++){
+						if ((12+i*12)<addtext.length){
+							ctx.fillText(addtext.slice(i*12, 12+i*12), 160, 12+12*i);
+						} else{
+							ctx.fillText(addtext.slice(i*12, addtext.Length), 160, 12+12*i);
+						}
+					}
+				}
+			}
+		}
+
+		function uploadPicture(){
+
+			var reads = new FileReader();
+			f = document.getElementById("file").files[0];
+			reads.readAsDataURL(f);
+			reads.onload = function(e){
+			shuiyin("shuiyinTest",this.result)
+			}
+
+		}
+
+
+
+
+		// shuiyin("shuiyinTest","./libs/image.jpg")
+	</script>
+</body>
+</html>
