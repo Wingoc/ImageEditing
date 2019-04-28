@@ -4,10 +4,11 @@
 	<title>canvas</title>
 </head>
 <body>
-	<canvas id="shuiyinTest"></canvas>
+	<canvas id="shuiyinTest" width="900" height="600"></canvas>
 	<img id="img_show" src="#" style="display: none;" />
-	<input type="file" id="file" class="filepath" onchange="uploadPicture(this)" >
+	
 	<div>
+		<input type="file" id="file" class="filepath" onchange="uploadPicture(this)" >
 		<input id="shuiyinText" value="[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50" type="text"/>
 		<button id="shuiyinBtn" class="mui-btn mui-btn-primary" type="button">点击添加文字</button>
 		<button id="download" class="mui-btn mui-btn-primary" type="button">下载</button>
@@ -24,11 +25,16 @@
 
 			var img = new Image;
 			img.src = imgurl;
-			console.log(img);
 			img.onload = function(){
 				var canvas = document.getElementById(canvasid);
+				canvas.style.width = img.width;
+				canvas.style.height = img.height;
+				console.log(canvas.width);
+				console.log(canvas.height);
+				console.log(img.width);
+				console.log(img.height);
 				var ctx = canvas.getContext("2d");
-				ctx.drawImage(img,0,0,canvas.width,canvas.height);
+				ctx.drawImage(img,0,0,img.width,img.height,0,0,img.width,img.height);
 				ctx.font = "bold 11px 微软雅黑";
 				ctx.fillStyle = "rgba(0,0,128,0.8)";
 				document.getElementById("shuiyinBtn").onclick = function(){
@@ -66,10 +72,6 @@
   			img_show.src = temp;
   			canvas.style.display = "none";
   			img_show.style.display = "block";
-  			// console.log(img_show);
-  			// a.download = 'abc';
-  			// alert(a);
-  			// a.click();
 		}
 
 
