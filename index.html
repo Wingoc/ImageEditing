@@ -5,13 +5,14 @@
 </head>
 <body>
 	<canvas id="shuiyinTest"></canvas>
+	<img id="img_show" src="#" style="display: none;" />
 	<input type="file" id="file" class="filepath" onchange="uploadPicture(this)" >
 	<div>
 		<input id="shuiyinText" value="[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50" type="text"/>
 		<button id="shuiyinBtn" class="mui-btn mui-btn-primary" type="button">点击添加文字</button>
 		<button id="download" class="mui-btn mui-btn-primary" type="button">下载</button>
 	</div>
-	<img id="img_show" src="#" />
+	
 
 
 
@@ -60,9 +61,11 @@
 		document.getElementById("download").onclick = function(){
 
 			var img_show = document.getElementById("img_show");
-			canvas = document.getElementById("shuiyinTest");
+			var canvas = document.getElementById("shuiyinTest");
 			temp = canvas.toDataURL();
   			img_show.src = temp;
+  			canvas.style.display = "none";
+  			img_show.style.display = "block";
   			// console.log(img_show);
   			// a.download = 'abc';
   			// alert(a);
