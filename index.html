@@ -135,6 +135,19 @@
   			alert("长按图片保存到相册！");
 		}
 
+
+		$(window).resize(resizeCanvas);
+		function resizeCanvas() {
+			var $canvas = $("#shuiyinText");
+			$canvas.attr("width", $(window).get(0).innerWidth);
+			$canvas.attr("height", $(window).get(0).innerHeight);
+			// $canvas.attr("id", "auto_canvas");
+			var canvas = document.getElementById("shuiyinTest");
+			ctx = canvas.getContext("2d");
+			// ctx.fillRect(0, 0, $canvas.width(), $canvas.height());
+		};
+		resizeCanvas();
+
 	</script>
 </body>
 </html>
