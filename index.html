@@ -21,7 +21,7 @@
 	<script src="./libs/jquery.min.js"></script>
 </head>
 <body>
-	<h5 style="color: blue; font-weight: bold; margin-left: 3px;">Tips: 打开 > 输入 > 添加文字 > 确认添加 > 长按保存</h5>
+	<h5 style="color: blue; font-weight: bold; margin-left: 3px;">使用步骤: 打开 > 输入 > 添加文字 > 确认添加 > 长按保存</h5>
 	<!-- <canvas id="shuiyinTest" style="margin-top: 5px; background-color: #ADD8E6;" width="460.8" height="259.2"></canvas>
 	<img id="img_show" src="" style="display: none; margin-top: 5px;" /> -->
 
@@ -36,7 +36,7 @@
     	<button id="shuiyinBtn" style="font-weight: bold;" class="btn btn-success" type="button">添加文字</button>
     	<button id="download" style="font-weight: bold;" class="btn btn-success" type="button">确认添加</button>
     </div>
-    <div style="text-align: center; margin-top: 10px;">
+    <div style="text-align: center; margin-top: 3px;">
     	<textarea id="shuiyinText" class="form-control" style="margin-left: 20px;" rows="8" cols="30">[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50。
 		</textarea>
     </div>
@@ -93,9 +93,9 @@
 					console.log(addtext.length);
 					for (var i = 0; i <= addtext.length / 19; i++){
 						if ((19+i*19)<addtext.length){
-							ctx.fillText(addtext.slice(i*19, 19+i*19), 580, 40+30*i);
+							ctx.fillText(addtext.slice(i*19, 19+i*19), 580, 35+30*i);
 						} else{
-							ctx.fillText(addtext.slice(i*19, addtext.Length), 580, 40+30*i);
+							ctx.fillText(addtext.slice(i*19, addtext.Length), 580, 35+30*i);
 						}
 					}
 				}
