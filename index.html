@@ -6,8 +6,8 @@
 	<link rel="icon" href="./libs/title.ico" type="image/x-icon">
 	<!-- <meta name="viewport" content="user-scalable=no,minimal-ui" /> -->
 	<!-- <meta http-equiv="X-UA-Compatible" content="IE=9"> -->
-	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes, width=device-width"> -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, width=device-width"> -->
 	<style type="text/css">
 	/*user-select: none;*/
 	html,body{
@@ -69,18 +69,18 @@
 
 
 				// polyfill 提供了这个方法用来获取设备的 pixel ratio
-				var getPixelRatio = function(context) {
-					var backingStore = context.backingStorePixelRatio ||
-					context.webkitBackingStorePixelRatio ||
-					context.mozBackingStorePixelRatio ||
-					context.msBackingStorePixelRatio ||
-					context.oBackingStorePixelRatio ||
-					context.backingStorePixelRatio || 1;
+				// var getPixelRatio = function(context) {
+				// 	var backingStore = context.backingStorePixelRatio ||
+				// 	context.webkitBackingStorePixelRatio ||
+				// 	context.mozBackingStorePixelRatio ||
+				// 	context.msBackingStorePixelRatio ||
+				// 	context.oBackingStorePixelRatio ||
+				// 	context.backingStorePixelRatio || 1;
 
-					return (window.devicePixelRatio || 1) / backingStore;
-				};
+				// 	return (window.devicePixelRatio || 1) / backingStore;
+				// };
 
-				var ratio = getPixelRatio(ctx);
+				// var ratio = getPixelRatio(ctx);
 
 
 
