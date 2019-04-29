@@ -2,17 +2,27 @@
 <html>
 <head>
 	<title>canvas</title>
+
+	<link rel="icon" href="./libs/title.ico" type="image/x-icon">
+	<meta http-equiv="X-UA-Compatible" content="IE=9">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+
+	<link href="./libs/bootstrap.min.css" rel="stylesheet">
+	<script src="./libs/jquery.min.js"></script>
 </head>
 <body>
 	<canvas id="shuiyinTest" width="900" height="600"></canvas>
 	<img id="img_show" src="#" style="display: none;" />
-	
-	<div>
-		<input type="file" id="file" class="filepath" onchange="uploadPicture(this)" >
-		<input id="shuiyinText" value="[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50" type="text"/>
-		<button id="shuiyinBtn" class="mui-btn mui-btn-primary" type="button">点击添加文字</button>
-		<button id="download" class="mui-btn mui-btn-primary" type="button">下载</button>
-	</div>
+
+    <div>
+    	<span class="importBtn">
+    		<input type="button" class="btn" id="fileReader" value="Open"/>
+    		<input type="file" id="file" style="display: none;" onchange="uploadPicture(this)">
+    	</span>
+    	<input id="shuiyinText" value="[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50" type="text"/>
+    	<button id="shuiyinBtn" class="btn btn-success" type="button">点击添加文字</button>
+    	<button id="download" class="btn btn-success" type="button">下载</button>
+    </div>
 	
 
 
@@ -27,14 +37,12 @@
 			img.src = imgurl;
 			img.onload = function(){
 				var canvas = document.getElementById(canvasid);
-				canvas.style.width = img.width;
-				canvas.style.height = img.height;
 				console.log(canvas.width);
 				console.log(canvas.height);
 				console.log(img.width);
 				console.log(img.height);
 				var ctx = canvas.getContext("2d");
-				ctx.drawImage(img,0,0,img.width,img.height,0,0,img.width,img.height);
+				ctx.drawImage(img,0,0,canvas.width,canvas.height);
 				ctx.font = "bold 11px 微软雅黑";
 				ctx.fillStyle = "rgba(0,0,128,0.8)";
 				document.getElementById("shuiyinBtn").onclick = function(){
@@ -51,6 +59,14 @@
 			}
 		}
 
+
+		// upload picture
+		document.getElementById("fileReader").onclick = function(){
+			document.getElementById("file").click();
+		}
+
+
+		// show canvas
 		function uploadPicture(){
 
 			var reads = new FileReader();
@@ -64,6 +80,7 @@
 		}
 
 
+		// canvas >>> img
 		document.getElementById("download").onclick = function(){
 
 			var img_show = document.getElementById("img_show");
@@ -73,10 +90,6 @@
   			canvas.style.display = "none";
   			img_show.style.display = "block";
 		}
-
-
-
-
 
 	</script>
 </body>
