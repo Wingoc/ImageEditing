@@ -8,6 +8,7 @@
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes, width=device-width"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, width=device-width">
 	<style type="text/css">
+	/*user-select: none;*/
 	html,body{
 		-webkit-touch-callout:none;
 		-webkit-text-size-adjust:none;
@@ -19,23 +20,23 @@
 	<script src="./libs/jquery.min.js"></script>
 </head>
 <body>
-	<canvas id="shuiyinTest" width="460.8" height="259.2"></canvas>
-	<img id="img_show" src="" style="display: none;" />
+	<h5 style="color: blue; font-weight: bold;">Tips: 打开 >> 输入 >> 添加文字 >> 确认添加 >> 长按保存</h5>
+	<canvas id="shuiyinTest" style="margin-top: 5px;" width="460.8" height="259.2"></canvas>
+	<img id="img_show" src="" style="display: none; margin-top: 5px;" />
 
-    <div style="text-align: center;">
+    <div style="text-align: center; margin-top: 10px;">
     	<span class="importBtn">       
-    		<!-- <input type="button" class="btn btn-default" id="fileReader" value="打开"/> -->
     		<button id="fileReader" class="btn btn-primary" style="font-weight: bold; width: 200px;" type="button">打开</button>
     		<input type="file" id="file" style="display: none;" onchange="uploadPicture(this)">
     	</span>
     </div>
 
     <div style="text-align: center; margin-top: 10px;">
-    	<button id="shuiyinBtn" class="btn btn-success" type="button">点击添加文字</button>
-    	<button id="download" class="btn btn-success" type="button">确认添加</button>
+    	<button id="shuiyinBtn" style="font-weight: bold;" class="btn btn-success" type="button">添加文字</button>
+    	<button id="download" style="font-weight: bold;" class="btn btn-success" type="button">确认添加</button>
     </div>
     <div style="text-align: center; margin-top: 10px;">
-    	<textarea id="shuiyinText" rows="8" cols="36">[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50。
+    	<textarea id="shuiyinText" class="form-control" style="margin-left: 20px;" rows="8" cols="30">[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50。
 		</textarea>
     </div>
     
