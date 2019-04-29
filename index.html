@@ -25,7 +25,7 @@
 	<!-- <canvas id="shuiyinTest" style="margin-top: 5px; background-color: #ADD8E6;" width="460.8" height="259.2"></canvas>
 	<img id="img_show" src="" style="display: none; margin-top: 5px;" /> -->
 
-    <div style="text-align: center; margin-top: 10px;">
+    <div style="text-align: center; margin-top: 20px;">
     	<span class="importBtn">       
     		<button id="fileReader" class="btn btn-primary" style="font-weight: bold; width: 200px;" type="button">打开</button>
     		<input type="file" id="file" style="display: none;" onchange="uploadPicture(this)">
@@ -85,17 +85,17 @@
 
 
 				ctx.drawImage(img,0,0,canvas.width,canvas.height);
-				ctx.font = "bold 12px 微软雅黑";
+				ctx.font = "bold 18px 微软雅黑";
 				// rgba(30,144,255,0.9)
 				ctx.fillStyle = "rgba(30,144,255,0.9)";
 				document.getElementById("shuiyinBtn").onclick = function(){
 					var addtext = document.getElementById("shuiyinText").value;
 					console.log(addtext.length);
-					for (var i = 0; i <= addtext.length / 15; i++){
-						if ((15+i*15)<addtext.length){
-							ctx.fillText(addtext.slice(i*15, 15+i*15), 275, 15+15*i);
+					for (var i = 0; i <= addtext.length / 19; i++){
+						if ((19+i*19)<addtext.length){
+							ctx.fillText(addtext.slice(i*19, 19+i*19), 580, 40+30*i);
 						} else{
-							ctx.fillText(addtext.slice(i*15, addtext.Length), 275, 15+15*i);
+							ctx.fillText(addtext.slice(i*19, addtext.Length), 580, 40+30*i);
 						}
 					}
 				}
