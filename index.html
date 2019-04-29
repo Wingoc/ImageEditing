@@ -14,15 +14,24 @@
 	<canvas id="shuiyinTest" width="460.8" height="259.2"></canvas>
 	<img id="img_show" src="#" style="display: none;" />
 
-    <div>
+    <div style="text-align: center;">
     	<span class="importBtn">
-    		<input type="button" class="btn" id="fileReader" value="Open"/>
+    		<input type="button" class="btn" id="fileReader" value="打开"/>
     		<input type="file" id="file" style="display: none;" onchange="uploadPicture(this)">
     	</span>
-    	<input id="shuiyinText" value="[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50" type="text"/>
-    	<button id="shuiyinBtn" class="btn btn-success" type="button">点击添加文字</button>
-    	<button id="download" class="btn btn-success" type="button">下载</button>
     </div>
+    <div style="text-align: center;">
+    	<!-- <input id="shuiyinText" value="[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50" type="text"/> -->
+    	<button id="shuiyinBtn" class="btn btn-success" type="button">点击添加文字</button>
+    	<button id="download" class="btn btn-success" type="button">确认添加</button>
+    </div>
+    <div style="text-align: center;">
+    	<!-- <input id="shuiyinText" value="[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50" type="text"/> -->
+
+    	<textarea id="shuiyinText" rows="8" cols="30">[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50。
+		</textarea>
+    </div>
+    
 	
 
 
@@ -43,7 +52,7 @@
 				console.log(img.height);
 				var ctx = canvas.getContext("2d");
 				ctx.drawImage(img,0,0,canvas.width,canvas.height);
-				ctx.font = "bold 11px 微软雅黑";
+				ctx.font = "bold 12px 微软雅黑";
 				// rgba(30,144,255,0.9)
 				ctx.fillStyle = "rgba(30,144,255,0.9)";
 				document.getElementById("shuiyinBtn").onclick = function(){
@@ -51,9 +60,9 @@
 					console.log(addtext.length);
 					for (var i = 0; i <= addtext.length / 15; i++){
 						if ((15+i*15)<addtext.length){
-							ctx.fillText(addtext.slice(i*15, 15+i*15), 260, 15+15*i);
+							ctx.fillText(addtext.slice(i*15, 15+i*15), 275, 15+15*i);
 						} else{
-							ctx.fillText(addtext.slice(i*15, addtext.Length), 260, 15+15*i);
+							ctx.fillText(addtext.slice(i*15, addtext.Length), 275, 15+15*i);
 						}
 					}
 				}
@@ -90,6 +99,7 @@
   			img_show.src = temp;
   			canvas.style.display = "none";
   			img_show.style.display = "block";
+  			alert("长按图片保存到相册！");
 		}
 
 	</script>
