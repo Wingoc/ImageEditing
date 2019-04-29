@@ -21,7 +21,7 @@
 	<script src="./libs/jquery.min.js"></script>
 </head>
 <body>
-	<h5 style="color: blue; font-weight: bold; margin-left: 3px; font-size: 12px;">Tips: 打开图片 > 编辑文字 > 添加文字 > 确认添加 > 长按图片保存</h5>
+	<h5 style="color: blue; font-weight: bold; margin-left: 3px; font-size: 12px;">Tips: 打开图片 > 编辑文字 > 添加文字 > 生成图片 > 长按图片保存</h5>
 
     <div style="text-align: center; margin-top: 20px;">
     	<span class="importBtn">       
@@ -32,7 +32,7 @@
 
     <div style="text-align: center; margin-top: 10px;">
     	<button id="shuiyinBtn" style="font-weight: bold;" class="btn btn-success" type="button">添加文字</button>
-    	<button id="download" style="font-weight: bold;" class="btn btn-success" type="button">确认添加</button>
+    	<button id="download" style="font-weight: bold;" class="btn btn-success" type="button">生成图片</button>
     </div>
     <div style="text-align: center; margin-top: 10px;">
     	<textarea id="shuiyinText" class="form-control" style="" rows="8" cols="30">[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50。
@@ -108,7 +108,7 @@
   			img_show.src = temp;
   			canvas.style.display = "none";
   			img_show.style.display = "block";
-  			alert("长按图片保存到相册！");
+  			alert("Success! 长按图片可保存到相册！");
 		}
 
 
