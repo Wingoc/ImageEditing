@@ -4,6 +4,7 @@
 	<title>图片添加文字</title>
 
 	<link rel="icon" href="./libs/title.ico" type="image/x-icon">
+	<!-- <meta name="viewport" content="user-scalable=no,minimal-ui" /> -->
 	<!-- <meta http-equiv="X-UA-Compatible" content="IE=9"> -->
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes, width=device-width"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, width=device-width">
@@ -59,7 +60,7 @@
 				console.log(img.width);
 				console.log(img.height);
 				var ctx = canvas.getContext("2d");
-				ctx.drawImage(img,0,0,canvas.width,canvas.height);
+				ctx.drawImage(img,0,0,canvas.width * ratio,canvas.height * ratio);
 				ctx.font = "bold 12px 微软雅黑";
 				// rgba(30,144,255,0.9)
 				ctx.fillStyle = "rgba(30,144,255,0.9)";
