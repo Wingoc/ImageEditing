@@ -35,12 +35,12 @@
     	<button id="download" style="font-weight: bold;" class="btn btn-success" type="button">确认添加</button>
     </div>
     <div style="text-align: center; margin-top: 10px;">
-    	<textarea id="shuiyinText" class="form-control" style="margin-left: 5px;" rows="8" cols="30">[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50。
+    	<textarea id="shuiyinText" class="form-control" style="" rows="8" cols="30">[河苑]喜'阅'新一代亲子共读活动打卡第2天，今天我们阅读了《绿山墙的安妮》P21~P50。
 		</textarea>
     </div>
 
 
-    <canvas id="shuiyinTest" style="margin-top: 5px; background-color: #ADD8E6;" width="921.6" height="518.4"></canvas>
+    <canvas id="shuiyinTest" style="margin-top: 5px; display: none;" width="921.6" height="518.4"></canvas>
 	<img id="img_show" src="" style="display: none; margin-top: 5px;" />
     
 	
@@ -57,10 +57,6 @@
 			img.src = imgurl;
 			img.onload = function(){
 				var canvas = document.getElementById(canvasid);
-				console.log(canvas.width);
-				console.log(canvas.height);
-				console.log(img.width);
-				console.log(img.height);
 				var ctx = canvas.getContext("2d");
 
 				ctx.drawImage(img,0,0,canvas.width,canvas.height);
@@ -85,6 +81,7 @@
 		// upload picture
 		document.getElementById("fileReader").onclick = function(){
 			document.getElementById("file").click();
+			document.getElementById("shuiyinTest").style.display = "block";
 		}
 
 
